@@ -1,0 +1,44 @@
+
+.tab-switch {
+    width: 103.5%;
+    margin-left: -1.8%;
+    min-width: 500px;
+    /* margin: 0 auto; */
+    overflow: hidden;
+    margin-top: -1.7%;
+    background-color: #f1f1f1; 
+  }
+  
+ 
+  .tab-buttons {
+    display: flex;
+    width: 100%; 
+  }
+  
+  .tab-buttons button {
+    flex: 1;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 16px;
+    text-align: left;
+    transition: background-color 0.3s;
+    width: 100%; 
+  }
+  
+  .tab-buttons button.active {
+    color: #007BFF;
+    text-decoration: underline;
+    height: 5%;
+  }
+  
+
+  .tab-content p {
+    padding: 20px;
+    margin: 0;
+  }
+  
+  
+  
