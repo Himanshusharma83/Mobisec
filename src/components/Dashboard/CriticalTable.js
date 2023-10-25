@@ -16,7 +16,7 @@ const Criticaltable = () => {
   const tableStyle = {
     fontFamily: 'arial, sans-serif',
     borderCollapse: 'collapse',
-    width: '102%',
+    width: '100%',
   };
 
   const cellStyle = {
@@ -33,7 +33,7 @@ const Criticaltable = () => {
 
   const cardStyle = {
     height: '350px',  
-    width:'255px',  
+    width:'265px',  
     marginRight: '15%',
     marginLeft:'1%'
   };

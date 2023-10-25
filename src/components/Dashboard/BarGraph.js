@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import Axios from 'axios'; // Import Axios
 import './BarGraph.css';
 import { BsXCircle, BsArrowRepeat, BsQuestionCircle } from 'react-icons/bs';
-
 import LifeTable from './liftable';
 
-
 const BarGraph = () => {
+  const [apiData, setApiData] = useState([]);
   const chartOptions = {
     chart: {
       type: 'bar',
@@ -24,7 +24,7 @@ const BarGraph = () => {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '200%',
+        columnWidth: '120%',
         endingShape: 'rounded',
       },
     },
@@ -58,42 +58,25 @@ const BarGraph = () => {
       },
   };
 
-  const series = [
-    {
-      name: "Extremely Critical",
-      data: [10],
-      color: "#FF5733", 
-    },
-    {
-      name: "Less Critical",
-      data: [5],
-      color: "#900C3F", 
-    },
-    {
-      name: "Highly Critical",
-      data: [5],
-      color: "#FFC0CB", 
-    },
-    {
-      name: "Not Critical",
-      data: [40, 90],
-      color: "#FF5733", 
-    },
-    {
-      name: "Moderately Critical",
-      data: [200],
-      color: "#33FF33", 
-    },
-  ];
-  
-  
+  const fetchDataFromAPI = async () => {
+    try {
+      const response = await Axios.get('https://6534f3e9e1b6f4c590471201.mockapi.io/Critcialdata'); // Replace with your API endpoint
+      setApiData(response.data); // Set the API data in state
+    } catch (error) {
+      console.error('Error fetching data from API:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataFromAPI(); // Fetch data when the component mounts
+  }, []);
+
   return (
     <div className="card my-card">
       <div className="card-header" style={{ display: 'flex', gap: '0rem' }}>
         <h5 className="card-title bartext" style={{ display: 'flex' }}>
           Criticality overview-Threat Profile of vulnerabilities
         </h5>
-
         <BsArrowRepeat
           style={{ marginTop: '-4%', fontSize: '1.3rem', display: 'flex', marginLeft: '10%', fontWeight: 'bold', cursor: 'pointer', color: '#aca8a8' }}
           className="card-icon"
@@ -114,9 +97,9 @@ const BarGraph = () => {
         <ReactApexChart
           type="bar"
           height={270}
-          width={310}
+          width={290}
           options={chartOptions}
-          series={series}
+          series={apiData} // Use the API data here
         />
       </div>
       <LifeTable />

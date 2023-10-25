@@ -10,7 +10,7 @@ const Drop = () => {
     color: '#797373',
     marginTop: '2%',
     border: '1px solid #dddddd',
-    marginLeft: '-6px',
+    marginLeft: '6px',
   };
 
   const dropdownStyle2 = {
